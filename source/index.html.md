@@ -1,14 +1,10 @@
 ---
-title: API Reference
+title: YABOJA API Reference
 
-language_tabs: # must be one of https://git.io/vQNgJ
+language_tabs:
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -19,221 +15,224 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+국민대학교 소프트웨어융합대학 소프트웨어학부 오픈소스소프트웨어 수업의 TEAM-asdf 입니다.
+YABOJA 서비스의 API Reference 입니다.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+# Contents
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl https://angelbeats.tk:3000/api/v1/contents/1
 ```
 
-```javascript
-const kittn = require('kittn');
+> Example data
 
-let api = kittn.authorize('meowmeowmeow');
+```json
+[
+  {
+    "idx": 1,
+    "title": "Serverless microservice architecture에서의 inter-communication caching",
+    "content": "빙글은 8월에 진행된 서비스 리뉴얼과 함께, 기존의 Ruby on rails 기반의 monolithic 앱에서 구현되어 있던 서비스 로직을 상당부분 Serverless 기반의 microservice architecture로 옮겼다.그걸 하면서도 정말 많은걸 배웠고, 그 과정에서 필요했던 다양한 도구들 (Lambda용 http api framework라던가...",
+    "url": "https://medium.com/vingle-tech-blog/serverless-microservice-architecture%EC%97%90%EC%84%9C%EC%9D%98-inter-communication-caching-80a43c979121?source=---------8---------------------",
+    "cnt": 6,
+    "source": "medium",
+    "keyword": "serverless,microservice,architecture",
+    "image": null,
+    "createdAt": "2017-10-22"
+  }
+]
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+모든 Article 들을 page 별로 반환합니다.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+### HTTP Request
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+`GET https://angelbeats.tk:3000/api/v1/contents/:page`
 
-`Authorization: meowmeowmeow`
+### Query Parameters
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+Parameter | Description
+--------- | -----------
+page | Page의 숫자
 
-# Kittens
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+# Github ID Checker
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl -d "userid=gwons" -H \
+    "Content-Type: application/x-www-form-urlencoded" \
+    -X POST https://angelbeats.tk:3000/api/v1/checker
 ```
 
-```javascript
-const kittn = require('kittn');
+> 만약 아이디를 찾았다면 아래와 같이 반환합니다.
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+```json
+{
+  "check": true
+}
 ```
 
-> The above command returns JSON structured like this:
+> 만약 아이디를 찾지 못한다면 아래와 같이 반환합니다.
+
+```json
+{
+  "check": false
+}
+```
+
+Github에서 아이디를 검색해 결과를 반환합니다.
+
+### HTTP Request
+
+`POST https://angelbeats.tk:3000/api/v1/checker`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+userid | 찾을 userid를 입력합니다.
+
+# Search
+```shell
+curl -d "search=개발" -H \
+    "Content-Type: application/x-www-form-urlencoded" \
+    -X POST https://angelbeats.tk:3000/api/v1/finder
+```
+
+> Example data
+
+```json
+[
+  {
+    "idx":7,
+    "title":"라이더스 개발팀 모바일에서 CI/CD 도입",
+    "content":"이 글은 CI/CD를 안드로이드에 도입하게 되면서 정리한 내용입니다.   구축 및 운영하고자 하시는 분에게 경험을 공유하고자 합니다.안녕하세요 라이더스 개발팀 장인수 입니다.우선 라이더스 개발팀이 하는 일을 소개 합니다. 저희 라이더스 개발팀은 배달되지 않는 음식점의 음식을 민트색 헬멧을 쓴 라이더 분들이 오토바이를 이용하여 음식을 픽업 후 고객님에게 배달...",
+    "url":"http://woowabros.github.io/experience/2018/06/26/bros-cicd.html",
+    "cnt":0,
+    "source":"woowabros",
+    "keyword":"jenkins",
+    "image":null,
+    "createdAt":"2018-06-26"
+  }
+]
+```
+
+
+입력한 단어가 포함된 기사 리스트를 반환합니다.
+
+### HTTP Request
+
+`POST https://angelbeats.tk:3000/api/v1/finder`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+search | 제목에 들어간 단어를 입력합니다.
+
+
+# Languages
+```shell
+curl https://angelbeats.tk:3000/api/v1/languages
+```
+
+> Example data
 
 ```json
 [
   {
     "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "name": "A# .NET",
+    "popular": "false"
   },
   {
     "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "name": "A# (Axiom)",
+    "popular": "false"
+  },
+  {
+    "id": 3,
+    "name": "A-0 System",
+    "popular": "false"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+DB에 저장된 모든 언어 리스트들을 반환합니다.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://angelbeats.tk:3000/api/v1/languages`
+
+
+# Signup
+```shell
+curl -d "userid=a&extract_language=python&interested_language=css" -H \
+    "Content-Type: application/x-www-form-urlencoded" \
+    -X POST https://angelbeats.tk:3000/api/v1/signup
+```
+
+> 만약 가입 성공이라면 아래와 같이 반환합니다.
+
+```json
+{
+  "check": true
+}
+```
+
+> 만약 가입 실패라면 아래와 같이 반환합니다.
+
+```json
+{
+  "check": false
+}
+```
+
+회원가입할때 유저아이디와 추출된 언어리스트 및 관심 있는 언어가 저장됩니다.
+
+
+### HTTP Request
+
+`POST https://angelbeats.tk:3000/api/v1/signup`
+
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Description
+--------- | -----------
+userid | 회원가입할 아이디를 입력합니다.
+extract_language | 추출된 언어를 입력합니다
+interested_language | 웹에서 고른 관심있는 언어를 입력합니다.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+프론트 단에서는 userid 와 interested_language 만 넘겨주면 됩니다.
 
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
+# Updater
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl https://angelbeats.tk:3000/api/v1/updater/:idx
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> 만약 조회 수 증가에 성공했다면 아래와 같이 반환합니다.
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "check": true
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> 만약 조회 수 증가에 실패했다면 아래와 같이 반환합니다.
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "check": false
 }
 ```
 
-This endpoint deletes a specific kitten.
-
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://angelbeats.tk:3000/api/v1/updater/:idx`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
-
+idx | 조회수를 증가시킬 글의 idx를 입력합니다.
