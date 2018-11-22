@@ -166,7 +166,7 @@ DB에 저장된 모든 언어 리스트들을 반환합니다.
 
 # Signup
 ```shell
-curl -d "userid=a&extract_language=python&interested_language=css" -H \
+curl -d "userid=a&extract_language=python&keyword=css" -H \
     "Content-Type: application/x-www-form-urlencoded" \
     -X POST http://angelbeats.tk:3000/api/v1/signup
 ```
@@ -201,9 +201,9 @@ Parameter | Description
 --------- | -----------
 userid | 회원가입할 아이디를 입력합니다.
 extract_language | 추출된 언어를 입력합니다
-interested_language | 웹에서 고른 관심있는 언어를 입력합니다.
+keyword | 웹에서 고른 관심있는 언어를 입력합니다.
 
-프론트 단에서는 userid 와 interested_language 만 넘겨주면 됩니다.
+프론트 단에서는 keyword 만 넘겨주면 됩니다.
 
 
 # Updater
