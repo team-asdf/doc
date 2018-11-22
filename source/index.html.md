@@ -21,7 +21,7 @@ YABOJA 서비스의 API Reference 입니다.
 # Contents
 
 ```shell
-curl https://angelbeats.tk:3000/api/v1/contents/1
+curl http://angelbeats.tk:3000/api/v1/contents/1
 ```
 
 > Example data
@@ -46,7 +46,7 @@ curl https://angelbeats.tk:3000/api/v1/contents/1
 
 ### HTTP Request
 
-`GET https://angelbeats.tk:3000/api/v1/contents/:page`
+`GET http://angelbeats.tk:3000/api/v1/contents/:page`
 
 ### Query Parameters
 
@@ -60,7 +60,7 @@ page | Page의 숫자
 ```shell
 curl -d "userid=gwons" -H \
     "Content-Type: application/x-www-form-urlencoded" \
-    -X POST https://angelbeats.tk:3000/api/v1/checker
+    -X POST http://angelbeats.tk:3000/api/v1/checker
 ```
 
 > 만약 아이디를 찾았다면 아래와 같이 반환합니다.
@@ -83,7 +83,7 @@ Github에서 아이디를 검색해 결과를 반환합니다.
 
 ### HTTP Request
 
-`POST https://angelbeats.tk:3000/api/v1/checker`
+`POST http://angelbeats.tk:3000/api/v1/checker`
 
 ### Query Parameters
 
@@ -95,7 +95,7 @@ userid | 찾을 userid를 입력합니다.
 ```shell
 curl -d "search=개발" -H \
     "Content-Type: application/x-www-form-urlencoded" \
-    -X POST https://angelbeats.tk:3000/api/v1/finder
+    -X POST http://angelbeats.tk:3000/api/v1/finder
 ```
 
 > Example data
@@ -121,7 +121,7 @@ curl -d "search=개발" -H \
 
 ### HTTP Request
 
-`POST https://angelbeats.tk:3000/api/v1/finder`
+`POST http://angelbeats.tk:3000/api/v1/finder`
 
 ### Query Parameters
 
@@ -132,7 +132,7 @@ search | 제목에 들어간 단어를 입력합니다.
 
 # Languages
 ```shell
-curl https://angelbeats.tk:3000/api/v1/languages
+curl http://angelbeats.tk:3000/api/v1/languages
 ```
 
 > Example data
@@ -161,14 +161,14 @@ DB에 저장된 모든 언어 리스트들을 반환합니다.
 
 ### HTTP Request
 
-`GET https://angelbeats.tk:3000/api/v1/languages`
+`GET http://angelbeats.tk:3000/api/v1/languages`
 
 
 # Signup
 ```shell
 curl -d "userid=a&extract_language=python&interested_language=css" -H \
     "Content-Type: application/x-www-form-urlencoded" \
-    -X POST https://angelbeats.tk:3000/api/v1/signup
+    -X POST http://angelbeats.tk:3000/api/v1/signup
 ```
 
 > 만약 가입 성공이라면 아래와 같이 반환합니다.
@@ -192,7 +192,7 @@ curl -d "userid=a&extract_language=python&interested_language=css" -H \
 
 ### HTTP Request
 
-`POST https://angelbeats.tk:3000/api/v1/signup`
+`POST http://angelbeats.tk:3000/api/v1/signup`
 
 
 ### Query Parameters
@@ -208,7 +208,7 @@ interested_language | 웹에서 고른 관심있는 언어를 입력합니다.
 
 # Updater
 ```shell
-curl https://angelbeats.tk:3000/api/v1/updater/:idx
+curl http://angelbeats.tk:3000/api/v1/updater/:idx
 ```
 
 > 만약 조회 수 증가에 성공했다면 아래와 같이 반환합니다.
@@ -229,7 +229,7 @@ curl https://angelbeats.tk:3000/api/v1/updater/:idx
 
 ### HTTP Request
 
-`GET https://angelbeats.tk:3000/api/v1/updater/:idx`
+`GET http://angelbeats.tk:3000/api/v1/updater/:idx`
 
 ### Query Parameters
 
