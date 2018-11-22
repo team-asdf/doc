@@ -21,7 +21,7 @@ YABOJA 서비스의 API Reference 입니다.
 # Contents
 
 ```shell
-curl http://angelbeats.tk:3000/api/v1/contents/1
+curl http://angelbeats.tk:3000/api/v1/contents/:page
 ```
 
 > Example data
@@ -52,6 +52,43 @@ curl http://angelbeats.tk:3000/api/v1/contents/1
 
 Parameter | Description
 --------- | -----------
+page | Page의 숫자
+
+# Select Contents
+```shell
+curl http://angelbeats.tk:3000/api/v1/contents/:username:/:page
+```
+
+> Example data
+
+```json
+[
+  {
+    "idx": 1,
+    "title": "Serverless microservice architecture에서의 inter-communication caching",
+    "content": "빙글은 8월에 진행된 서비스 리뉴얼과 함께, 기존의 Ruby on rails 기반의 monolithic 앱에서 구현되어 있던 서비스 로직을 상당부분 Serverless 기반의 microservice architecture로 옮겼다.그걸 하면서도 정말 많은걸 배웠고, 그 과정에서 필요했던 다양한 도구들 (Lambda용 http api framework라던가...",
+    "url": "https://medium.com/vingle-tech-blog/serverless-microservice-architecture%EC%97%90%EC%84%9C%EC%9D%98-inter-communication-caching-80a43c979121?source=---------8---------------------",
+    "cnt": 6,
+    "source": "medium",
+    "keyword": "serverless,microservice,architecture",
+    "image": null,
+    "createdAt": "2017-10-22"
+  }
+]
+```
+
+회원이 선택한 주제에 맞게 기사를 page 별로 반환합니다.
+
+### HTTP Request
+
+`GET http://angelbeats.tk:3000/api/v1/contents/:username/:page`
+
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+username | 유저 아이디
 page | Page의 숫자
 
 
