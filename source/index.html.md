@@ -256,6 +256,7 @@ curl -d "keyword=css" -H \
 ```
 
 > 만약 키워드 업데이트가 실패라면 아래와 같이 반환합니다.
+
 ```json
 {
   "update": false
