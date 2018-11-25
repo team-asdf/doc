@@ -129,7 +129,7 @@ DB에 저장된 모든 언어 리스트들을 반환합니다.
 
 ## Get Archive
 ```shell
-curl http://angelbeats.tk:3000/api/v1/contents/archives/:username:/:page
+curl http://angelbeats.tk:3000/api/v1/contents/archives/:username/:page
 ```
 
 > Example data
@@ -154,7 +154,30 @@ curl http://angelbeats.tk:3000/api/v1/contents/archives/:username:/:page
 
 ### HTTP Request
 
-`GET http://angelbeats.tk:3000/api/v1/contents/archives/:username:/:page`
+`GET http://angelbeats.tk:3000/api/v1/contents/archives/:username/:page`
+
+
+## Get Keyword
+```shell
+curl http://angelbeats.tk:3000/api/v1/contents/keyword/:username
+```
+
+> Example data
+
+```json
+[
+  {
+    "extract_language": "python,css",
+    "keyword": ""
+  }
+]
+```
+
+유저의 추출된 키워드와 관심있는 키워드를 추출합니다.
+
+### HTTP Request
+
+`GET http://angelbeats.tk:3000/api/v1/contents/keyword/:username`
 
 
 # Checker
