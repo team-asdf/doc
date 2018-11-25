@@ -54,7 +54,7 @@ Parameter | Description
 --------- | -----------
 page | Page의 숫자
 
-# Select Contents
+## Select Contents
 ```shell
 curl http://angelbeats.tk:3000/api/v1/contents/:username:/:page
 ```
@@ -91,8 +91,42 @@ Parameter | Description
 username | 유저 아이디
 page | Page의 숫자
 
+## Languages
+```shell
+curl http://angelbeats.tk:3000/api/v1/languages
+```
 
-# Github ID Checker
+> Example data
+
+```json
+[
+  {
+    "id": 1,
+    "name": "A# .NET",
+    "popular": "false"
+  },
+  {
+    "id": 2,
+    "name": "A# (Axiom)",
+    "popular": "false"
+  },
+  {
+    "id": 3,
+    "name": "A-0 System",
+    "popular": "false"
+  }
+]
+```
+
+DB에 저장된 모든 언어 리스트들을 반환합니다.
+
+### HTTP Request
+
+`GET http://angelbeats.tk:3000/api/v1/languages`
+
+# Checker
+
+## Github ID Checker
 
 ```shell
 curl -d "userid=gwons" -H \
@@ -128,7 +162,9 @@ Parameter | Description
 --------- | -----------
 userid | 찾을 userid를 입력합니다.
 
-# Search
+# Find
+
+## Searching
 ```shell
 curl -d "search=개발" -H \
     "Content-Type: application/x-www-form-urlencoded" \
@@ -165,41 +201,6 @@ curl -d "search=개발" -H \
 Parameter | Description
 --------- | -----------
 search | 제목에 들어간 단어를 입력합니다.
-
-
-# Languages
-```shell
-curl http://angelbeats.tk:3000/api/v1/languages
-```
-
-> Example data
-
-```json
-[
-  {
-    "id": 1,
-    "name": "A# .NET",
-    "popular": "false"
-  },
-  {
-    "id": 2,
-    "name": "A# (Axiom)",
-    "popular": "false"
-  },
-  {
-    "id": 3,
-    "name": "A-0 System",
-    "popular": "false"
-  }
-]
-```
-
-DB에 저장된 모든 언어 리스트들을 반환합니다.
-
-### HTTP Request
-
-`GET http://angelbeats.tk:3000/api/v1/languages`
-
 
 # Signup
 ```shell
@@ -279,10 +280,10 @@ keyword | 웹에서 고른 관심있는 언어를 입력합니다.
 
 # Updater
 ```shell
-curl http://angelbeats.tk:3000/api/v1/updater/:idx
+curl -d "userid=:userid" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://angelbeats.tk:3000/api/v1/updater/:idx
 ```
 
-> 만약 조회 수 증가에 성공했다면 아래와 같이 반환합니다.
+> 만약 조회 수 증가와 읽은 기사가 저장이 성공했다면 아래와 같이 반환합니다.
 
 ```json
 {
@@ -290,7 +291,7 @@ curl http://angelbeats.tk:3000/api/v1/updater/:idx
 }
 ```
 
-> 만약 조회 수 증가에 실패했다면 아래와 같이 반환합니다.
+> 만약 조회 수 증가와 읽은 기사의 저장이 실패했다면 아래와 같이 반환합니다.
 
 ```json
 {
@@ -300,10 +301,11 @@ curl http://angelbeats.tk:3000/api/v1/updater/:idx
 
 ### HTTP Request
 
-`GET http://angelbeats.tk:3000/api/v1/updater/:idx`
+`POST http://angelbeats.tk:3000/api/v1/updater/:idx`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
 idx | 조회수를 증가시킬 글의 idx를 입력합니다.
+userid | 입력할 아이디를 넣습니다.
