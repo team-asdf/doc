@@ -335,6 +335,7 @@ keyword | 웹에서 고른 관심있는 언어를 입력합니다.
 
 
 # Updater
+
 ```shell
 curl -d "userid=:userid" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://angelbeats.tk:3000/api/v1/updater/:idx
 ```
@@ -365,3 +366,36 @@ Parameter | Description
 --------- | -----------
 idx | 조회수를 증가시킬 글의 idx를 입력합니다.
 userid | 입력할 아이디를 넣습니다.
+
+## Delete archive
+
+```shell
+curl -d "" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://angelbeats.tk:3000/api/v1/updater/:username/:idx
+```
+
+> 만약 아카이브 해체에 성공했다면 아래와 같이 반환합니다.
+
+```json
+{
+  "check": true
+}
+```
+
+> 만약 아카이브 해체에 실패했다면 아래와 같이 반환합니다.
+
+```json
+{
+  "check": false
+}
+```
+
+### HTTP Request
+
+`POST http://angelbeats.tk:3000/api/v1/updater/:username/:idx`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+idx | 아카이브에 있는 해체시킬 idx를 입력합니다.
+userid | 아카이브에 등록된 아이디를 넣습니다.
