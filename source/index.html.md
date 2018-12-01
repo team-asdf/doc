@@ -260,9 +260,7 @@ search | 제목에 들어간 단어를 입력합니다.
 
 # Signup
 ```shell
-curl -d "userid=a&extract_language=python&keyword=" -H \
-    "Content-Type: application/x-www-form-urlencoded" \
-    -X POST http://angelbeats.tk:3000/api/v1/signup
+curl -d "userid=:userid" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://angelbeats.tk:3000/api/v1/signup/newuser
 ```
 
 > 만약 가입 성공이라면 아래와 같이 반환합니다.
@@ -281,21 +279,17 @@ curl -d "userid=a&extract_language=python&keyword=" -H \
 }
 ```
 
-회원가입할때 유저아이디와 추출된 언어리스트 및 관심 있는 언어가 저장됩니다.
-
+회원가입할때 유저아이디와 추출된 언어리스트가 저장됩니다.
 
 ### HTTP Request
 
-`POST http://angelbeats.tk:3000/api/v1/signup`
-
+`POST http://angelbeats.tk:3000/api/v1/signup/newuser`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
 userid | 회원가입할 아이디를 입력합니다.
-extract_language | 추출된 언어를 입력합니다
-keyword | 웹에서 고른 관심있는 언어를 입력합니다.
 
 ## Keyword update
 ```shell
