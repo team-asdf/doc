@@ -393,3 +393,50 @@ Parameter | Description
 --------- | -----------
 idx | 아카이브에 있는 해체시킬 idx를 입력합니다.
 userid | 아카이브에 등록된 아이디를 넣습니다.
+
+# Opensource
+```shell
+curl http://angelbeats.tk:3000/api/v1/opensources
+```
+
+> 아래와 같이 반환합니다.
+
+```json
+[
+  {
+    "id": 1,
+    "repo": "server ",
+    "url": "https://github.com/team-asdf/yaboja-server/network/dependencies"
+  },
+  {
+    "id": 2,
+    "repo": "crawler",
+    "url": "https://github.com/team-asdf/yaboja-crawler/network/dependencies"
+  },
+  {
+    "id": 3,
+    "repo": "apidoc ",
+    "url": "https://github.com/team-asdf/doc/network/dependencies"
+  },
+  {
+    "id": 4,
+    "repo": "web",
+    "url": "https://github.com/team-asdf/yaboja-web/network/dependencies"
+  },
+  {
+    "id": 5,
+    "repo": "keyword",
+    "url": "https://github.com/team-asdf/yaboja-keyword/network/dependencies"
+  },
+  {
+    "id": 6,
+    "repo": "userAnalysis",
+    "url": "https://github.com/team-asdf/yaboja-userAnalysis/network/dependencies"
+  }
+]
+
+```
+
+### HTTP Request
+
+`POST http://angelbeats.tk:3000/api/v1/opensources`
